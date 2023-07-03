@@ -1,9 +1,7 @@
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message
-import re
 
-# Вместо BOT TOKEN HERE нужно вставить токен вашего бота, полученный у @BotFather
 with open('API.txt', 'r') as file:
     API_TOKEN: str = file.read()
 
@@ -27,8 +25,13 @@ async def process_help_command(message: Message):
 # кроме команд "/start" и "/help"
 @dp.message()
 async def send_echo(message: Message):
-    if 'выключ' not in message.text.lower():
-        await message.reply(text=message.text)
+    try:
+        x = message.text.lower()
+    except:
+        x = 'включ'
+    if 'выключ' not in x:
+        await message.send_copy(chat_id=message.chat.id)
+        await message.reply('Всё, мне надоело повторять')
     else:
         await message.reply('Давай, рискни')
 
