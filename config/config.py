@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from environs import Env
 
+
 @dataclass
 class DatabaseConfig:
     database: str  # Название базы данных
