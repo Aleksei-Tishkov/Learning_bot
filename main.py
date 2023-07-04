@@ -1,13 +1,15 @@
+import os
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command, Text
 from aiogram.types import Message
 from random import randint
+import dotenv
 
-with open('API.txt', 'r') as file:
-    API_TOKEN: str = file.read()
+dotenv.load_dotenv()
+
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN)
+bot: Bot = Bot(token=os.getenv('API_TOKEN'))
 dp: Dispatcher = Dispatcher()
 
 users = {}
