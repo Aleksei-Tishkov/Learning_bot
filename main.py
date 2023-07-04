@@ -2,11 +2,11 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import Command, Text
 from aiogram.types import Message
 from random import randint
-from environs import Env
+from config.config import load_config
 
-env = Env()
-env.read_env()
-bot_token = env('API_TOKEN')
+config = load_config('./.env')
+
+bot_token = config.tg_bot.token
 
 # Создаем объекты бота и диспетчера
 bot: Bot = Bot(token=bot_token)
