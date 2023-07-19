@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon import LEXICON_RU
-from keyboards.keyboards import game_kb, yes_no_kb
+from keyboards.keyboards import game_kb, yes_no_kb, rules_keyboard, create_inline_kb, BUTTONS
 from services.services import get_bot_choice, get_winner
 
 router: Router = Router()
@@ -15,7 +15,7 @@ async def process_start_command(message: Message):
 
 @router.message(Command(commands='help'))
 async def process_start_command(message: Message):
-    await message.answer(text=LEXICON_RU['/help'], reply_markup=yes_no_kb)
+    await message.answer(text=LEXICON_RU['/help'], reply_markup=rules_keyboard)
 
 
 @router.message(Text(text=LEXICON_RU['yes_button']))
