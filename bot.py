@@ -1,6 +1,6 @@
-from aiogram import Bot, Dispatcher
 import asyncio
 import logging
+from aiogram import Bot, Dispatcher
 from config.config import Config, load_config
 from handlers import other_handlers, user_handlers
 from keyboards.set_menu import set_main_menu
